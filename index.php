@@ -1,8 +1,9 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8"/>
-    <title>CoverMe - an ECU Assignment Stapler</title>
+    <title>ECU Assignment Stapler</title>
     <link rel="stylesheet" href="coverme.css">
     <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">

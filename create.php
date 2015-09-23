@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('fpdf.php');
 
 $unit_code = "ECU1234";
@@ -83,24 +84,23 @@ $pdf->Text(135,214.5, $date_submitted);
 $pdf->AddPage();
 $pdf->Image('ecu_cover2.png',10,15,190);
 $cover_pdf = uniqid('cover-');
-$temp_dir = '../private';
+$temp_dir = '../private/' . session_id();
 $pdf->Output("$temp_dir/$cover_pdf");
 
 //Some code here is taken from http://www.johnboy.com/blog/merge-multiple-pdf-files-with-php - props!
 
 //Because the extra "ue" would be 2 chars too many? Really, php?
-$stapled_file = "$temp_dir/" . uniqid('assignment-') . '.pdf';
+$stapled_file = uniqid('assignment-') . '.pdf';
 
 $documents = "$cover_pdf $files_uploaded";
 $document_array = explode(' ', $documents);
 //TODO: Messy file structure. Fix this.
-passthru("cd $temp_dir;pdftk $documents output ../web/$stapled_file");
-
+passthru("cd $temp_dir;pdftk $documents output $stapled_file");
 header('Content-type: application/pdf');
-readfile($stapled_file);
+readfile($temp_dir . '/' . $stapled_file);
 
 //Delete the final document - I don't want it, you don't want me to have it
-unlink($stapled_file);
+unlink($temp_dir . '/' . $stapled_file);
 foreach($document_array as $document)
 {
   //Delete each uploaded document and the generated cover
@@ -109,5 +109,6 @@ foreach($document_array as $document)
     unlink("$temp_dir/$document");
   }
 }
+rmdir($temp_dir);
 
 ?>
