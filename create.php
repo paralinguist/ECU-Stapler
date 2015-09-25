@@ -1,5 +1,6 @@
 <?php
 session_start();
+mkdir('../private/' . session_id(), 0710, true);
 require('fpdf.php');
 
 $unit_code = "ECU1234";
@@ -96,11 +97,12 @@ $documents = "$cover_pdf $files_uploaded";
 $document_array = explode(' ', $documents);
 //TODO: Messy file structure. Fix this.
 passthru("cd $temp_dir;pdftk $documents output $stapled_file");
+//echo "cd $temp_dir;pdftk $documents output $stapled_file";
 header('Content-type: application/pdf');
 readfile($temp_dir . '/' . $stapled_file);
 
 //Delete the final document - I don't want it, you don't want me to have it
-unlink($temp_dir . '/' . $stapled_file);
+/*unlink($stapled_file);
 foreach($document_array as $document)
 {
   //Delete each uploaded document and the generated cover
@@ -109,6 +111,6 @@ foreach($document_array as $document)
     unlink("$temp_dir/$document");
   }
 }
-rmdir($temp_dir);
+rmdir($temp_dir);*/
 
 ?>

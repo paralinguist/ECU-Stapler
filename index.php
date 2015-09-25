@@ -11,9 +11,11 @@
     <link href="upload.css" rel="stylesheet" />
   </head>
   <body>
+    <h1>ECU Assignment Stapler</h1>
     <div class="staple-forms">
     <form method="post" action="create.php">
       <div class="cover-form">
+        <h2>Cover Sheet</h2>
         <label for="unit-code" class="text-label">Unit code:</label>
         <input id="unit-code" name="unit-code" type="text" class="pdf-text" placeholder="ECU1234"><br>
         <label for="unit-title" class="text-label">Unit title:</label>
@@ -46,6 +48,7 @@
     </form>
     <div class="upload-boxen">
       <form id="upload" method="post" action="handler.php" enctype="multipart/form-data">
+        <h2>Upload Files</h2>
         <div id="drop">
           Drop Assignment PDFs Here
           <a>(Or Browse)</a>
@@ -55,6 +58,9 @@
           <!-- The file uploads will be shown here -->
         </ul>
       </form>
+    </div>
+    <div id="feedback">
+      Send feedback/rewards/punishment to jonathan [at] ihle.in or <a href="https://twitter.com/MrIhlein">Twert Me</a>
     </div>
     </div>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
