@@ -69,5 +69,12 @@
     <script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>
     <script src="js/upload.js"></script>
+    <script>
+      //Quick fix script to allow use of back button without breaking uploads
+      $(window).bind("pageshow", function()
+      {
+        $(files-uploaded).val('');
+      });
+    </script>
   </body>
 </html>
