@@ -28,8 +28,6 @@ $(function(){
             // Add the HTML to the UL element
             data.context = tpl.appendTo(ul);
 
-            //JDI - let's keep track of the FNs for great justice
-
             // Initialize the knob plugin
             tpl.find('input').knob();
 
@@ -52,8 +50,7 @@ $(function(){
         //JDI
         done: function(e, data)
         {
-          //console.log(data.result);
-          $('#files-uploaded').val($('#files-uploaded').val() + ' ' + data.result);
+          $('#current-files').text($('#current-files').text() + ' ' + data.result);
         },
 
         progress: function(e, data){

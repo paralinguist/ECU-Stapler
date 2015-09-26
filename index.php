@@ -4,16 +4,15 @@
   <head>
     <meta charset="utf-8"/>
     <title>ECU Assignment Stapler</title>
-    <link rel="stylesheet" href="coverme.css">
     <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link href="upload.css" rel="stylesheet" />
+    <link rel="stylesheet" href="stapler.css">
   </head>
   <body>
     <h1>ECU Assignment Stapler</h1>
     <div class="staple-forms">
-    <form method="post" action="create.php">
+    <form id="cover-details" method="post" action="create.php">
       <div class="cover-form">
         <h2>Cover Sheet</h2>
         <label for="unit-code" class="text-label">Unit code:</label>
@@ -42,8 +41,8 @@
         <input id="campus-jo" name="campus" type="radio" class="pdf-radio" value="JO">Joondalup<br>
         <label for="date-submitted" class="text-label">Date submitted:</label>
         <input id="date-submitted" name="date-submitted" type="date" class="pdf-date" value="<?php echo date("Y-m-d");  ?>"><br><br>
-        <button type="submit" class="btn btn-success pdf-button"><i class='fa fa-file-pdf-o'></i> Staple Assignment</button>
       </div>
+      <span id="current-files"></span>
       <input id="files-uploaded" name="files-uploaded" type="hidden">
     </form>
     <div class="upload-boxen">
@@ -51,14 +50,17 @@
         <h2>Upload Files</h2>
         <div id="drop">
           Drop Assignment PDFs Here
-          <a>(Or Browse)</a>
+          <a class="stapler-button"><i class="fa fa-folder-open"></i> Browse</a>
           <input type="file" name="upl" multiple />
         </div>
         <ul>
           <!-- The file uploads will be shown here -->
         </ul>
       </form>
-    </div>
+    </div><br>
+    <div id="submit-button">
+      <a id="staple" class="stapler-button"><i class='fa fa-file-pdf-o'></i> Staple Assignment</a>
+    </div><br>
     <div id="feedback">
       Send feedback/rewards/punishment to jonathan [at] ihle.in or <a href="https://twitter.com/MrIhlein">Twert Me</a>
     </div>
@@ -70,10 +72,10 @@
     <script src="js/jquery.fileupload.js"></script>
     <script src="js/upload.js"></script>
     <script>
-      //Quick fix script to allow use of back button without breaking uploads
-      $(window).bind("pageshow", function()
+      $("#staple").click(function()
       {
-        $(files-uploaded).val('');
+        $('#files-uploaded').val($("#current-files").html());
+        $("#cover-details").submit();
       });
     </script>
   </body>
