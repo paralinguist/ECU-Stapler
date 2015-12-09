@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>ECU Assignment Stapler</title>
-    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+    <link href=//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="stapler.css">
